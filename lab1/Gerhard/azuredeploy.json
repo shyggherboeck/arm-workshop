@@ -2,16 +2,16 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "StorageAccount": {
-           "type": "string",
-           "metadata": {
-                "description": "Name for the storage Account"
-            }
-        },
         "stac": {
            "type": "string",
            "metadata": {
                 "description": ""
+            }
+        },
+        "actType": {
+           "type": "string",
+           "metadata": {
+                "description": "Type of the Storage Account"
             }
         }
         
@@ -24,10 +24,10 @@
             "name": "[parameters('stac')]",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "[parameters('StorageAccount')]"
+                "displayName": "[parameters('stac')]"
             },
             "sku": {
-                "name": "Standard_LRS"
+                "name": "[parameters('actType')]"
             },
             "kind": "StorageV2"
         }
